@@ -1,4 +1,4 @@
-#Long-read sequencing data 
+#Long-read sequencing data (ONT)
 #Reads alignment
 ngmlr -t 6 -r reference.fa -q sample.fq -o sample.sam -x ont
 #Convert to BAM file
@@ -17,3 +17,6 @@ ls *.iris.vcf > iris.vcf.list
 SURVIVOR merge iris.vcf.list 1000 1 1 -1 -1 -1 merged.iris.vcf
 #Filter out some SVs based missing rate
 vcftools --vcf merged.iris.vcf --max-missing 0.9 --recode --recode-INFO-all --out vcftools-filter
+
+
+#Short-read sequencing data
