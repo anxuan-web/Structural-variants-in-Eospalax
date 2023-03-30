@@ -4,3 +4,9 @@ ngmlr -t 6 -r reference.fa -q sample.fq -o sample.sam -x ont
 #Convert to BAM file
 samtools view -bS sample.sam | samtools sort > sample.sort.bam
 samtools index sample.sort.bam
+#SV detection used Sniffles
+sniffles -m sample.sort.bam -v sample.vcf
+#Merge all samples SVs and genotype each sample SVs
+ls *.vcf > vcf_files_raw_calls.txt
+SURVIVOR merge vcf_files_raw_calls.txt 1000 1 1 -1 -1 -1 merged_SURVIVOR_1kbpdist_typesave.vcf
+sniffles -m sample.sort.bam -v sample_gt.vcf --genotype -n -1 --Ivcf merged_SURVIVOR_1kbpdist_typesave.vcf
