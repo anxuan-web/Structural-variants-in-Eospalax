@@ -1,0 +1,6 @@
+#Long-read sequencing data 
+#Reads alignment
+ngmlr -t 6 -r reference.fa -q sample.fq -o sample.sam -x ont
+#Convert to BAM file
+samtools view -bS sample.sam | samtools sort > sample.sort.bam
+samtools index sample.sort.bam
