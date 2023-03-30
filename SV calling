@@ -16,4 +16,4 @@ iris --keep_long_variants --also_deletions threads=30 genome_in=reference.fa vcf
 ls *.iris.vcf > iris.vcf.list
 SURVIVOR merge iris.vcf.list 1000 1 1 -1 -1 -1 merged.iris.vcf
 #Filter out some SVs based missing rate
-
+vcftools --vcf merged.iris.vcf --max-missing 0.9 --recode --recode-INFO-all --out vcftools-filter
