@@ -25,9 +25,11 @@ bwa mem -t 4 -R "@RG\tID:sample\tPL:illuminatLB:sample\tSM:sample" reference.fa 
 samtools sort -m4G -@4 -o sample.sort.bam sample.bam
 gatk MarkDuplicates -I sample.sort.bam  -O sample.sort.markdup.bam -M sample.sort.markdup_metrics.txt
 samtools index sample.sort.markdup.bam
-#Delly 
+#Delly v0.7.6
 delly call -g $reference -o $name.bcf $name.sort.markdup.bam
 delly merge -o all.sites.bcf $name1.bcf $name2.bcf $name3.bcf ...
 delly call -g $reference -v all.sites.bcf -o $name1.geno.bcf $name1.sort.markdup.bam
 for file in *geno.bcf; do bcftools view $file -O v > $file.vcf; done
+#Lumpy v0.2.13
+smoove call --outdir results-smoove/ --name $sample --fasta $reference -p 1 --genotype $name1.sort.markdup.bam
 
