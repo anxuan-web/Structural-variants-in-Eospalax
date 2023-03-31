@@ -42,4 +42,4 @@ gffread -w transcript.fa -g genome.fasta merge.gtf
 ./PASApipeline/Launch_PASA_pipeline.pl  --TRANSDECODER -c align.conf -C -r -R -g sample.Chr1.fa -t sample.stri.transcript.fa --ALIGNERS blat --CPU 40 && ./PASApipeline/scripts/pasa_asmbls_to_training_set.dbi --pasa_transcripts_fasta  sample.sqlite.assemblies.fasta --pasa_transcripts_gff3 sample.sqlite.pasa_assemblies.gff3 > pasa_asmbls_to_training_set.log
 
 ##EVM v1.1.1 was used to integrate all predictions
-
+https://github.com/EVidenceModeler/EVidenceModeler/wiki#running-evm
