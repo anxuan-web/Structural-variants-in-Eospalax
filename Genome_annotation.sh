@@ -13,3 +13,9 @@ RepeatMasker -nolow -e ncbi -pa 5 -norna -dir ./repeatmasker -lib consensi.fa.cl
 RepeatProteinMask -engine ncbi -noLowSimple -pvalue 0.0001 genome.fasta
 
 ##Gene annotation
+#Ab initio prediction using AUGUSTUS v3.3.1, chromosomes can be separated to improve the seed of analysis
+augustus --softmasking=1 --AUGUSTUS_CONFIG_PATH=software/augustus/augustus-3.3.3/config --species=human sample.soft.Chr1.fa --UTR=off > ./out/sample.soft.Chr1.fa_out
+#Ab initio prediction using genscan, the genome is divided into many 5Mb sequences
+perl ConvertFormat_genescan.pl genome.soft.masked.fasta genome.soft.masked-split 5000000
+genscan ./software/genscan/HumanIso.smat split.Chr1-0.fa > ./out/split.Chr1-0.fa.genscan
+#
