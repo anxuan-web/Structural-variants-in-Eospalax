@@ -21,4 +21,8 @@ vcftools --vcf merged.iris.vcf --max-missing 0.9 --recode --recode-INFO-all --ou
 
 ##Short-read sequencing data
 #Illumina reads align
-bwa mem 
+bwa mem -t 4 -R "@RG\tID:sample\tPL:illuminatLB:sample\tSM:sample" reference.fa sample.1.fq.gz sample.2.fq.gz | samtools view -Sb - > sample.bam
+samtools sort -m4G -@4 -o sample.sort.bam sample.bam
+samtools index sample.sort.bam
+#Delly 
+delly call -g reference.fa
