@@ -14,3 +14,7 @@ python3 $PATH_TO_SYRI -c out.filtered.coords -d out.filtered.delta -r refgenome 
 python3 $PATH_TO_PLOTSR syri.out refgenome qrygenome -H 8 -W 5
 https://schneebergerlab.github.io/syri/pipeline.html
 #validating the large inversions using contig-level genome of E. baileyi
+nucmer ref.fa contig.fa -p out
+delta-filter -i 90 -l 10000 -q out.delta > filter.out.delta
+show-coords -c -r filter.out.delta > filter.out.delta.coords
+Rscript dot.r
