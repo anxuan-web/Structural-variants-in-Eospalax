@@ -17,4 +17,12 @@ https://schneebergerlab.github.io/syri/pipeline.html
 nucmer ref.fa contig.fa -p out
 delta-filter -i 90 -l 10000 -q out.delta > filter.out.delta
 show-coords -c -r filter.out.delta > filter.out.delta.coords
-Rscript dot.r
+
+##Predicting telomere locations
+tidk search [OPTIONS] --string <STRING> --output <OUTPUT> --dir <DIR> <FASTA>
+https://github.com/tolkit/telomeric-identifier
+
+##Identifying SDs
+./sedef.sh -o <output> -j <jobs> soft.mask.genome.fa
+
+##Identifying inverted repeats
