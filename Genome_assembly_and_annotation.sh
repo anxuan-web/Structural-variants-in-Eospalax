@@ -1,3 +1,8 @@
+##Genome assembly
+nextDenovo test_data/run.cfg
+https://github.com/Nextomics/NextDenovo
+
+
 ##Repeat sequences annotation
 #Finding full-length LTR retrotranspsons in genome sequences
 ltr_finder -w 2 -s tRNA_mus.fa genome.fasta 1>genome.ltr_finder
