@@ -26,5 +26,7 @@ https://github.com/tolkit/telomeric-identifier
 ./sedef.sh -o <output> -j <jobs> soft.mask.genome.fa
 
 ##Identifying inverted repeats using IRF v3.05
+irf305.linux.exe ref.fa 2 3 5 80 10 800 10000 300000 -d -h -t4 1000 -t5 10000 -t7 300000
 
 ##Identifying LOF-SNPs using SnpEff v5.1
+java -Xmx8g -jar ./snpEff/snpEff/snpEff.jar fon ./vcf/${f}.vcf.recode.vcf > ./annvcf/ann_${f}.vcf
